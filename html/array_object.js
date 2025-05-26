@@ -112,7 +112,7 @@ calculatePercentage("Dan", 500);
 calculatePercentage("Runda", 500);
 calculatePercentage("Stephanie", 500);
 
-// custom functions
+// Today we are going to learn about loops
 // loops
 // array within an array - later on
 
