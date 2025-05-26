@@ -1,0 +1,113 @@
+<html>
+    <head>
+        <title>Harshvir Singh Gurm</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+      <ul>
+         <li>
+             <a href="index.html">Home</a>
+         </li>
+         <li>
+             <a href="facebook.html">Facebook</a>
+         </li>
+         <li>
+             <a href="table.html">Table</a>
+         </li>
+     </ul>
+
+        <h1>This is a heading 1</h1>
+        <h2>This is a heading 2</h2>
+        <h3>This is a heading 3</h3>
+        <h4>This is a heading 4</h4>
+        <h5>This is a heading 5</h5>
+        <h6>This is a heading 6</h6>
+
+        <p>This is my first line. <br> This is my paragraph. <br> This is my paragraph. This is my paragraph. This is my paragraph. This is my paragraph. This is my paragraph. 
+            This is my paragraph and 
+            <strong>This is my strong text</strong>
+            <i>This is my italic style text</i>
+        </p>
+        
+        <div>This is my div 1</div>
+        <span>This is a span tag 1</span>
+        <span>This is a span tag 2</span>
+        <div>This is my div 2</div>
+
+        <div>
+            <a href="https://www.google.com/" target="_blank">Google</a>
+        </div>
+
+        
+        <!-- the image is in the same folder as index.html file -->
+        <!-- <img src="my_image.jpg" alt="Image not Found"> -->
+
+        <!-- This is if the image is inside a images folder from your index.html file -->
+         <!-- CTRL + / -->
+          <div>
+            <img src="images/my_image.jpg" alt="Image not Found" width="300px" height="300px" >
+          </div>
+
+        <!-- if the image is in a previous folder from index.html file -->
+        <!-- <img src="../my_image.jpg" alt="Image not Found"> -->
+
+        <!-- To access an image from the internet using its url -->
+         <div>
+            <img src="https://static.dezeen.com/uploads/2025/05/sq-google-g-logo-update_dezeen_2364_col_0.jpg" width="10%" height="10%" alt="Image Not Found">
+         </div>
+
+         <!-- Add the google image either from your local or from internet
+         When you click on that image it should take you to google.com  -->
+         <!-- Hint: It's a combination of these two tags: -->
+         <a href="https://www.google.com/" target="_blank">
+            <img src="https://static.dezeen.com/uploads/2025/05/sq-google-g-logo-update_dezeen_2364_col_0.jpg" width="10%" height="10%" alt="Image Not Found">
+         </a>
+          
+         <!-- type="a" for a,b,c...soon -->
+         <!-- type="I" for I,II.. soon  -->
+          <!-- Order List -->
+         <ol type="I">
+            <li>Coffee</li>
+            <li>Tea</li>
+            <li>Cold Drinks</li>
+            <li>Cold Coffee</li>
+         </ol>
+
+         <!-- Unorder list -->
+         <ul>
+            <li>Option 1</li>
+            <li>Option 2</li>
+            <li>Option 3</li>
+         </ul>
+
+        
+         
+         <form action="action.php" method="POST">
+             First Name: <input name="first_name" type="text" value="Harsh" required>
+             Last Name: <input type="text" name="last_name" placeholder="Last Name">
+             Age: <input type="number" name="age" required>
+             Password: <input name="password" type="password" required>
+             
+             Gender: <select name="gender" id="gender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="not_to_answer">Prefer not to answer</option>
+             </select>
+
+             <div>
+                <input type="radio" name="days" value="Sunday">Sunday
+                <input type="radio" name="days" value="Monday">Monday
+                <input type="radio" name="days" value="Tuesday">Tuesday
+                <input type="radio" name="days" value="Wednesday">Wednesday
+                <input type="radio" name="days" value="Thursday">Thursday
+                <input type="radio" name="days" value="Friday">Friday
+                <input type="radio" name="days" value="Saturday">Saturday
+             </div>
+             
+
+             <button>Submit</button>
+             <input type="submit" value="Submit Button">
+            </form>
+        
+    </body>
+</html>

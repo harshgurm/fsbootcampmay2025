@@ -1,0 +1,154 @@
+<html>
+    <head>
+        <title>Table</title>
+        <link rel="stylesheet" href="style.css">
+        <!-- Adding Internal style
+         simply means adding style tags to the html file -->
+
+        <style>
+            table, td {
+                border:1px solid black;
+                font-size: 30px;                
+                text-align: center;
+            }
+
+            table {
+                width:60%;
+                height: 200px;  
+                margin: 20px;
+            }
+
+            img {
+                width: 400px;
+                height: 400px;
+            }
+
+
+            
+            /* Ctrl + / */
+            /* h1{
+                color:red;
+                background-color: yellow;
+                font-size: 40px;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+            } */
+
+            .bg_color {
+                color:red;
+                background-color: yellow;
+                font-size: 40px;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
+
+            #cars {
+                color:blue;
+                background-color: yellow;
+            }
+
+            th {
+                background-color: blue;
+            }
+        </style>
+    </head>
+    <body>
+
+        <ul>
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+            <li>
+                <a href="facebook.html">Facebook</a>
+            </li>
+            <li>
+                <a href="table.html">Table</a>
+            </li>
+        </ul>
+
+        <h1 class=" bg_color">Customer Information</h1>
+        <p class="bg_col_font_effect">This is to see the external css functionality</p>
+        <p class="bg_color">This table contains customer data</p>
+
+
+        <p class="para">Hello this is paragraph</p>
+
+        <table>
+            
+            <tr>
+                <td>ID</td>
+                <td>Name</td>
+                <td>Age</td>
+            </tr>
+            
+            <tr>
+                <td>1</td>
+                <td>Harsh</td>
+                <td>28</td>
+            </tr>
+
+            <tr>
+                <td>2</td>
+                <td>Sam</td>
+                <td>30</td>
+            </tr>
+
+        </table>
+        <!-- Create a table add three column:
+        Sr No. or Sequence or Numbering, Make Model - this will be your column header
+        then add three random cars and their model as data 
+        apply background color to be red just to the table header columns -->
+
+
+        <table>
+            <tr>
+                <th>Sr No.</th>
+                <th>Make</th>
+                <th>Model</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Honda</td>
+                <td>Accord</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Kia</td>
+                <td>Seltos</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Tesla</td>
+                <td>Model Y</td>
+            </tr>
+        </table>
+
+        <table>
+            
+            <tr>
+                <td>ID</td>
+                <td>Name</td>
+                <td>Age</td>
+            </tr>
+            
+            <tr>
+                <td>1</td>
+            </tr>
+
+            <tr>
+                <td>2</td>
+                <td>Sam</td>
+                
+            </tr>
+
+        </table>
+
+        <!-- grab a picture from the internet and assign it height and width using css 
+        set the width and height to be 400px; -->
+
+        <h1 id="cars" style="color:red;background-color: aqua;">Car Information</h1>
+        <!-- Inline style example -->
+        <p style="color:brown;font-size:22px;background-color: aqua;">This will contain information regarding the cars</p>
+
+        <img src="https://media.istockphoto.com/id/540570630/vector/pixel-characters.jpg?s=2048x2048&w=is&k=20&c=38tEYnMvYPwSjTM6QMd83d7nvWdqNWGGINV27F-duU0=" alt="">
+    </body>
+</html>

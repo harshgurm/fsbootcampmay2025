@@ -1,0 +1,66 @@
+<html>
+    <head>
+        <title>Harshvir Singh Gurm</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        
+        <ul>
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+            <li>
+                <a href="facebook.html">Facebook</a>
+            </li>
+            <li>
+                <a href="table.html">Table</a>
+            </li>
+        </ul>
+
+         <form action="action.php" method="POST">
+            <div>
+                <input type="text" name="first_name" placeholder="First Name" required>
+                <input type="text" name="last_name" placeholder="Last Name">
+            </div>
+            <div>
+
+                <select name="month" id="month">
+                    <option value="Jan">Jan</option>
+                    <option value="Feb">Feb</option>
+                    <option value="March">March</option>
+                    <option value="April">April</option>
+                </select>
+
+                <select name="date" id="date">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+
+                <select name="year" id="year">
+                    <option value="2022">2022</option>
+                    <option value="2023">2023</option>
+                    <option value="2024">2024</option>
+                    <option value="2025">2025</option>
+                </select>
+
+            </div>
+            <div>
+                Female <input type="radio" name="gender" value="female">
+                Male <input type="radio" name="gender" value="male">
+                Custom <input type="radio" name="gender" value="custom">
+            </div>
+
+            <div>
+                <input type="email" name="email" placeholder="Email" required>
+            </div>
+
+            <div>
+                <input type="password" placeholder="New Password" name="password" required>
+            </div>
+            <input type="submit" value="Sign Up">
+        </form>
+        
+    </body>
+</html>

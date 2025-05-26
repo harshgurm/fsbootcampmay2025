@@ -1,0 +1,30 @@
+.bg_col_font_effect {
+    color:green;
+    background-color: lightblue;
+    font-size: 25px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif  
+}
+
+a:hover{
+    background-color: yellow;
+}
+
+a:visited{
+    color:grey;
+}
+
+.para {
+    color:rgb(86, 99, 156);
+    background-color: red;
+    width: 50%;
+    height:200px;
+    font-size:40px;
+    font-style: italic;
+    font-weight: bold;
+    border: 15px solid black;
+    padding: 10px;
+}
+
+/* margin
+padding -- done
+display */
