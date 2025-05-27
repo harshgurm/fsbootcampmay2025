@@ -60,7 +60,25 @@ function hello(name ){
 
 // use a loop on this function in a way that it says Hello to everyone
 
-// let val = 0;
-// while (val < 10){
-//     console.log("While loop ", val;
-// }
+let abc = 1;
+
+console.log(abc);
+
+let val = 0;
+while (val < 10) {
+    val++;// val = val + 1;
+    console.log("While loop ", val);
+}
+
+do {
+    console.log('It gonna print the first time for sure', val);
+} while (val < 10);
+
+//
+var two_dim_arr = [
+    ["Harsh", "Gurm", 25],
+    ["Sam", "Smith", 30],
+    ["George", "Brown", 35]
+]
+
+console.log(two_dim_arr[0][0]);
