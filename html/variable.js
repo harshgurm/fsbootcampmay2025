@@ -94,3 +94,15 @@ if(x === five){
 } else {
     console.log("The values are not equal  and I am using === operator");
 }
+
+console.log(' Current Value of x', x);
+x = x + 1;
+console.log('Value after x + 1', x);
+x = ++x;//x + 1; 
+x = x++;
+console.log('Value after ++x', x);
+x += 1;// x = x + 1;
+console.log('Value after x += 1', x);
+
+x -= 4;
+console.log('Value after x -= 4', x);
