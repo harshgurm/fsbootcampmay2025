@@ -1,0 +1,84 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="mobilestyle.css">
+        <link rel="stylesheet" href="tabletstyle.css">
+        <link rel="stylesheet" href="desktopstyle.css">
+    </head>
+    <style>
+        img {
+            width: 50vw; 
+            /* vw = viewport width 
+                vh = viewport height */
+            height: 40vh;
+        }
+        /* styles applying to different mobile devices */
+        @media (max-width: 480px) {
+            body {
+                background-color: yellow;
+                /* font-size: 40px; */
+            }    
+            /* img {
+                width: 45%;
+                height: 30%;
+            } */
+        }
+        /* style for tablets */
+        @media (min-width: 480px) and (max-width:768) {
+            body {
+                background-color: red;
+                /* font-size: 90px; */
+            }
+            /* img {
+                width: 45%;
+                height: 30%;
+            }     */
+        }
+        @media (min-width: 768) {
+            body {
+                background-color: red;
+                /* font-size: 90px; */
+            }
+            /* img {
+                width: 45%;
+                height: 30%;
+            }     */
+        }
+
+        @media (orientation:landscape){
+            body {
+                color:aqua;
+            }
+        }
+        @media (orientation:portrait){
+            body {
+                color:aqua;
+            }
+        }
+
+        .parent {
+            font-size: 20px;
+        }
+        .child {
+            font-size: 2em;
+        }
+
+        
+    </style>
+    <body>
+        This is my text
+          <img src="https://media.istockphoto.com/id/2148306092/photo/it-developer-with-stressful-overworked-in-creating-online-software-code-gusher.jpg?s=2048x2048&w=is&k=20&c=3vSrhnoUYeFcPngDZRtl3o5hj6hnaF8li5V1igMVzKw=" alt="">
+    <!-- use any of above approaches and handle the text size based on whether its a mobile device vs tablet vs laptop -->
+     <!-- Step 1 - what css property controls the text size? -->
+      <div class="parent">
+        This is parent 
+        <div class="child">
+            This is a child div
+            <div class="child">
+                This is a child div 2
+            </div>
+        </div>
+      </div>
+
+    </body>
+</html>
