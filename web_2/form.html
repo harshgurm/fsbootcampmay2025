@@ -1,0 +1,76 @@
+<html>
+
+<head>
+    <title>Forms</title>
+</head>
+<script>
+    // 3 different ways to submit the form
+    // 3 ways to get the input value of a form
+    function validateForm() {
+
+        //instead of the form name
+
+        //Method 1 - to get the value based on name
+        // let email = document.forms['myForm']['email'].value;
+        // let password = document.forms['myForm']['password'].value;
+
+        //Method 2
+        let email = document.getElementById('email').value;
+        let password = document.getElementById('password').value;
+
+        // if the email and password are empty
+        // show the alert message email and password are empty
+        if (email == "" && password == "") {
+            document.getElementsByClassName('email_error')[0].style.display = 'inline';
+            document.getElementsByClassName('pass_error')[0].style.display = 'inline';
+            // alert("Please provide an email and password");
+
+            return false;
+        }
+        else if (email == "") {
+            document.getElementsByClassName('email_error')[0].style.display = 'inline';
+            return false;
+        }
+        else if (password == "") {
+            // alert("Please provide a password");
+            document.getElementsByClassName('pass_error')[0].style.display = 'inline';
+            return false;
+        } else {
+            //submit the form here manually
+            // document.forms['myForm'].submit()
+            document.getElementsByClassName('email_error')[0].style.display = 'none';
+            document.getElementsByClassName('pass_error')[0].style.display = 'none';
+        }
+    }
+</script>
+
+<style>
+    .email_error,
+    .pass_error {
+        color: red;
+        display: none;
+    }
+</style>
+
+<body>
+    <form name="myForm" action="" method="POST">
+        <!-- Method 1 for calling the function -->
+        <!-- <form name="myForm" action="" method="POST" onsubmit="return validateForm()"> -->
+        <!-- try to get the value of email and password using id -->
+        <div>
+            Email <input type="email" name="email" id="email"> <br>
+            <span class="email_error">Please provide an email</span>
+        </div>
+
+        <div>
+            Password <input type="password" name="password" id="password"><br>
+            <span class="pass_error">Please provide a password</span>
+        </div>
+
+        <!-- Method 1 for calling the function -->
+        <!-- <input type="submit" value="Submit"> -->
+        <input type="button" value="Submit" onclick="validateForm()">
+    </form>
+</body>
+
+</html>
