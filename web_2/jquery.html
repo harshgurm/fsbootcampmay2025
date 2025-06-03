@@ -1,0 +1,76 @@
+<html>
+    <head>
+        <title>Jquery Intro</title>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+        <script>
+            $(document).ready(function(){
+                // $(selector).function()
+                //selecting something based on its tag
+                $("h1").html("<h3>This is New Hello Word!!!!!");
+                    $("h2").text("Hello there!!!!!");
+                    $("#para").css({"color":"red", "background-color": "yellow"});
+                    $(".paragraph").css({"color":"yellow", "background-color":"pink"})
+                    $("h1").addClass("color");
+                    $("h1").removeClass("color");
+
+                    $("#hide_button").click(function(){
+                        $("#para").hide();
+                    });
+
+                    $("#show_button").click(function(){
+                        $("#para").show(); //toggle() to do both show and hide
+                    });
+
+                    // $("#flip").click(function (){
+                    //     $("#expand").slideDown();
+                    // })
+
+                    //Make this expand div go up again using slideUp();
+                    $("#flip").click(function (){
+                        $("#expand").slideToggle();
+                    })
+
+                    $("#turn_on_bulb").click(function(){
+                        console.log($("#first_name").val());
+                        $("#img").attr("src", "https://images.thdstatic.com/productImages/315df8dc-19f8-4f5c-bdcc-27d6e845855a/svn/black-outdoor-sconces-w2235-21-64_600.jpg");
+                    })
+
+
+                    
+            })
+        </script>
+        <style>
+            .color {
+                color:blue;
+                background-color: yellow;
+                font-size:30px;
+            }
+
+            #expand {
+                padding:50px;
+                display:none;
+            }
+        </style>
+    </head>
+    <body>
+       First Name: <input type="text" name="first_name" id="first_name"> 
+        <h1>Hello World!!!!</h1>
+        <h2>This is heading h2</h2>
+        <p>Hello This is a paragraph</p>
+        <p id="para">This is a paragraph with id para</p>
+        <button id="show_button">Show Me</button>
+        <button id="hide_button">Hide Me</button>
+        <p class="paragraph">This is a paragraph with class paragraph</p>
+
+        <!-- Using Jquery: -->
+        <h4>This is Lorem, text </h4>
+        <div id="flip">Click here to slide down</div>
+        <div id="expand">
+            <p>This is a para in div</p>
+            <p id="test">This is my second paragraph</p>
+        </div>
+        <span class="rob">This is a span tag</span>
+        <button id="turn_on_bulb">Turn on the bulb</button>
+        <img id="img" src="https://images.thdstatic.com/productImages/9b401d82-c428-4fd9-aa03-117ae2fab9bf/svn/black-outdoor-sconces-w2235-21-40_600.jpg" alt="">
+    </body>
+</html>

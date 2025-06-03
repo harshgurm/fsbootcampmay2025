@@ -1,0 +1,75 @@
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+        <script>
+            $(document).ready(function(){
+                
+                $("input").focus(function(){
+                    $(this).css("background-color","yellow");
+                })
+
+                $("input").blur(function(){
+                    $(this).css("background-color","red");
+                })
+
+                $("button").click(function(){
+                    // $("div").animate({left:'250px'});
+                    $("div").fadeIn(8000);
+                })
+
+                // method 1 of submitting the form
+                // $('form').submit(function (event){
+                //     event.preventDefault();
+                //     console.log('HERE')
+                // })
+
+                //Another way of submitting the form
+                $("#submit").click(function(){
+                    $("#user_error").hide();
+                    $("#pass_error").hide();
+                    var fname = $("#first_name").val()
+                    var pass = $("#password").val()
+                    console.log(fname);
+                    // Task 
+                    if(fname == "" && pass == ""){
+                        $("#user_error").show();
+                        $("#pass_error").show();
+                    } else if(fname == ""){
+                        $("#user_error").show();
+                    } else if(pass == ""){
+                        $("#pass_error").show();
+                    } else {
+                        $('form').submit();
+                    }
+                    
+                });
+
+            })
+        </script>
+        <style>
+            .error {
+                color: red;
+                display:none;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- <div style="background-color: aqua;height:100px;width:100px;position: absolute;display:none;"></div> -->
+        <form action="">
+            <div>
+                UserName:<input type="text" id="first_name" name="first_name">
+            </div>
+            <div>
+                <span class="error" id="user_error">Please provide a Username</span>
+            </div>
+            <div>
+                Password:<input type="password" id="password" name="password">
+            </div>
+            <div>
+                <span class="error" id="pass_error">Please provide a Password</span>
+            </div>
+            <button type="button" id="submit">Log In</button>
+        </form>
+        
+    </body>
+</html>
