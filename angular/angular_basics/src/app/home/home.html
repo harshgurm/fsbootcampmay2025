@@ -1,0 +1,16 @@
+<h1>Welcome to the home</h1>
+
+<!-- Two ways to display a value from a variable -->
+<!-- Way 1 - using Interpolation {{}} -->
+<img src="{{imageUrl}}" alt="">
+
+<!-- Way 2 - property binding adding [] brackets on the attribute -->
+<img [src]="imageUrl" alt="">
+
+<button (click)="updateImage()">Update Image</button>
+
+  @for (customer of customers; track customer.id) {
+  <li>{{ customer.id + ' The person name is ' + customer.name }}</li>
+  }
+
+<app-home-details></app-home-details>

@@ -1,0 +1,63 @@
+<div class="container">
+
+  <!-- add a style effect using property binding -->
+  <!-- <h1 [style.color]="color_yellow">Hello, {{ title }}</h1> -->
+  <h1 class="text-info">Hello, {{ title }}</h1>
+  <!-- add and my age is -->
+  <!-- Interpolation {{}} -->
+  <h3 class="bg_color"> My name is {{ my_name }} and my age is {{ age }}</h3>
+
+  <div>
+    <label for="name" class="form-label">Name:</label>
+    <input type="text" class="form-control" [ngModel]="my_name">
+    <!-- two way data binding -->
+    <label for="name" class="form-label">Name:</label>
+    <input type="text" class="form-control" [(ngModel)]="my_name">
+  </div>
+
+  <!-- Two ways of doing concat() using interpolation -->
+  <p [class]="class_var">{{ person.id + ' The person name is ' + person.name }}</p>
+  <p [style.backgroundColor]="color_yellow">{{ person.id }} The person name is {{ person.name }}</p>
+
+  <ul class="list-group">
+    <!-- apply the css bg_color class through a variable -->
+    @for (person of persons; track person.id) {
+    <li [class]="class_var">{{ person.id + ' The person name is ' + person.name }}</li>
+    }
+  </ul>
+  <p [style]="custom_style">This is an example of custom multi style </p>
+
+  <div>
+    <h2 [ngClass]="{bg_color: false, error: true}">This is an example of Attribute Directives</h2>
+    <h3 [ngClass]="['bg_color', 'error']">NgClass</h3>
+    <h3 [ngClass]=" errors ? 'error' : 'bg_color' ">Conditional Classes</h3>
+    <!-- <p>Another example of this issue</p> -->
+
+  </div>
+
+  @if (age > 18) {
+  <div>You are an adult</div>
+  } @else {
+  <div>You are still too young</div>
+  }
+
+  <div>
+    @if (isDisabled) {
+    <img [src]="imageUrl" alt="">
+
+    } @else {
+    <img [src]="anotherImageUrl" alt="">
+    }
+  </div>
+
+  <div>
+    <label for="name" class="form-label">Name</label>
+    <input type="text" class="form-control" [disabled]="isDisabled">
+    <button class="btn btn-primary mb-3 mt-3" (click)="disabled(!isDisabled)">Click Me</button>
+  </div>
+
+
+  <app-home></app-home>
+</div>
+
+<router-outlet />
