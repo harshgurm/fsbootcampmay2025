@@ -1,0 +1,47 @@
+<div class="container mt-3">
+    <form action="" [formGroup]="signUpForm" (ngSubmit)="submitSignUp()">
+        <div>
+            <label class="form-label">Username</label>
+            <input type="text" class="form-control" name="username" formControlName="username">
+            @if(signUpForm.get('username')?.touched && signUpForm.get('username')?.errors?.['required']) {
+                <div class="text-danger"> Please provide a username </div>
+            }
+
+            @if(signUpForm.get('username')?.touched && signUpForm.get('username')?.errors?.['minlength']) {
+                <div class="text-danger"> Minimum 6 characters are required</div>
+            }
+        </div>
+        <div class="mb-3 mt-3">
+            <label for="" class="form-label">Password</label>
+            <input type="password" class="form-control" name="password" formControlName="password">
+            @if(signUpForm.get('password')?.touched && signUpForm.get('password')?.errors?.['required']) {
+                <div class="text-danger"> Please provide a password </div>
+            }
+
+            @if(signUpForm.get('password')?.touched && signUpForm.get('password')?.errors?.['minlength']) {
+                <div class="text-danger"> Minimum 6 characters are required</div>
+            }
+
+            @if(signUpForm.get('password')?.touched && signUpForm.get('password')?.errors?.['maxlength']) {
+                <div class="text-danger"> Maximum 12 characters are allowed</div>
+            }
+        </div>
+        <div>
+            <label class="form-label">Name</label>
+            <input type="text" class="form-control" name="name" formControlName="name">
+            @if(signUpForm.get('name')?.touched && signUpForm.get('name')?.errors?.['required']) {
+                <div class="text-danger"> Please provide a name </div>
+            }
+        </div>
+        <div>
+            <label class="form-label">Department</label>
+            <input type="text" class="form-control" name="department" formControlName="department">
+        </div>
+        <div class="mb-3 mt-3">
+            <label class="form-label">Age</label>
+            <input type="number" class="form-control" name="age" formControlName="age">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Sign In</button>
+    </form>
+</div>
