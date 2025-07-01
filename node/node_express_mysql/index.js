@@ -1,11 +1,16 @@
 const express = require('express');
+const cors = require('cors');
 const app = express();
 const connection = require('./connection');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const verifyUser = require('./auth');
 
+app.use(cors());
 // console.log(connection)
 app.use(express.json())
 
-app.get('/', async (req, res) => {
+app.get('/customers', verifyUser, async (req, res) => {
     try {
         const [data] = await connection.promise().query(
             'SELECT * FROM customers');
@@ -18,7 +23,7 @@ app.get('/', async (req, res) => {
 
 });
 
-app.get('/customers/:id', async (req, res) => {
+app.get('/customers/:id', verifyUser, async (req, res) => {
     let customer_id = req.params.id;
     try {
         const [data] = await connection.promise().query(
@@ -26,26 +31,22 @@ app.get('/customers/:id', async (req, res) => {
                 FROM customers
                 WHERE customer_id = ?`, customer_id);
 
-        if (data.length > 0) res.json(data);
+        if (data.length > 0) res.send(data);
         else res.json('No customer found');
     } catch (error) {
         res.json(error);
     }
-    //Task - find something that check if the array is empty or not
 
 });
 
-//Task 1 - 5 mins
+
 app.post('/customers/', async (req, res) => {
-    // let customer_name = req.body.name;
-    // let age = req.body.age;
-    // let department = req.body.department;
     let { name, age, department } = req.body;
 
     try {
         const [data] = await connection.promise().query(`INSERT INTO fsmay2025.customers (name, age, department) 
                                     VALUES (?, ?, ?) `, [name, age, department]);
-        if (data && data.affectedRows > 0) res.json("Record added successfully");
+        if (data && data.affectedRows > 0) res.status(200).send({message : "Record added successfully!!!"});
         else res.json("Unable to add the customer");
 
     } catch (error) {
@@ -73,26 +74,22 @@ app.delete('/delete_customer/:id', async (req, res) => {
     }
     
 })
-// Task
-//Try to find the customer you want to update
-// get the customer id from the url 
+
 app.put('/update_customers/:id', async (req, res) => {
     let customer_id = req.params.id;
     let {name, age, department} = req.body;
+    console.log('Customer ID', customer_id);
+    console.log('Req body', req.body);
     try {
         const [customer] = await connection.promise().query(`SELECT * 
             FROM fsmay2025.customers 
             WHERE customer_id = ?`, customer_id);
             if(customer.length > 0) {
-                console.log(customer[0].department)
-                console.log(department);
-                console.log(department == undefined);
                 for(let cus in customer){
                     if(name == undefined) {
                         name = customer[cus].name;
                     }
                     if(department == undefined) {
-                        console.log('Coming here', customer[cus].department)
                         department = customer[cus].department;
                     }
                     if(age == undefined) {
@@ -111,6 +108,56 @@ app.put('/update_customers/:id', async (req, res) => {
     }
 })
 
+app.post('/signup', async (req, res) => {
+    let { username, password, confirm_password, status } = req.body;
+
+    if(!username || !password || !confirm_password){
+        return res.status(401).json('Please provide all the values');
+    }
+
+    if(password != confirm_password) return res.status(401).json("Password doesn't match");
+
+    if(!status) status = 1;
+
+    const hashedPass = await bcrypt.hash(password, 10);
+
+    try {
+        const [data] = await connection.promise().query(`INSERT INTO fsmay2025.users (username, password, status) 
+                                    VALUES (?, ?, ?) `, [username, hashedPass, status ]);
+        if (data && data.affectedRows > 0) res.json("Record added successfully");
+        else res.json("Unable to add the customer");
+    } catch (error) {
+        res.json(error);
+    }
+})
+
+
+app.post('/signin', async (req, res) => {
+    let { username, password } = req.body;
+
+    if(!username || !password) return res.status(401).json('Please provide all the values');
+
+    try {
+        const [data] = await connection.promise().query(`
+            SELECT users_id, username, password
+            FROM fsmay2025.users 
+            WHERE username = ? `, username);
+        if (data.length > 0) {
+            const passResult = await bcrypt.compare(password, data[0].password);
+            if(passResult){
+                const token = await jwt.sign({user_id:data[0].user_id}, 'thisIsMyEncryptionKey',  { expiresIn: '1h' });
+                return res.status(200).json({'token': token});    
+            } else {
+                return res.status(401).json('Authentication failed!');
+            }
+        } else {
+            return res.json("Customer not found");
+        }
+
+    } catch (error) {
+        return res.json(error);
+    }
+})
 
 app.listen(3000, () => {
     console.log('Listening on port 3000');
