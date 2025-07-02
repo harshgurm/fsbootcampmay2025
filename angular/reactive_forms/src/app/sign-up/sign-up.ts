@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import { LoginService } from '../login-service';
 
 @Component({
   selector: 'app-sign-up',
@@ -9,16 +10,22 @@ import { FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angula
 })
 export class SignUp {
 
+  loginService = inject(LoginService);
+
   signUpForm = new FormGroup({
     username: new FormControl('', [Validators.required, Validators.minLength(6)]),
     password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
-    name: new FormControl('', [Validators.required]),
-    age: new FormControl(''),
-    department: new FormControl(''),
+    confirm_password: new FormControl('', [Validators.required]),
   })
 
   submitSignUp(){
-    console.log(this.signUpForm);
+    if(this.signUpForm.value){
+      this.loginService.userSignUp(this.signUpForm.value).subscribe((data:any) => {
+        if(data){
+          console.log(data);
+        }
+      })
+    }
   }
 
 }

@@ -1,0 +1,40 @@
+<div class="container">
+    <form action="" #customerForm="ngForm" (ngSubmit)="submitCustomerForm(customerForm)">
+        <div class="mb-3 mt-3">
+            <label for="email" class="form-label">Name:</label>
+            <input type="text" class="form-control" name="name" [(ngModel)]="customer.name" #name="ngModel" minlength="6" required>
+            @if(name.hasError('required') && name.touched){
+                <div class="text-danger">
+                  Name is required.
+                </div>
+            }
+
+            @if(name.hasError('minlength') && name.touched){
+                <div class="text-danger">
+                  Minimum 6 characters are required for the name.
+                </div>
+            }
+        </div>
+        <div class="mb-3 mt-3">
+            <label for="age" class="form-label">Age:</label>
+            <input type="number" class="form-control" name="age" [(ngModel)]="customer.age" #age="ngModel" required>
+            @if(age.hasError('required') && age.touched){
+                <div class="text-danger">
+                  Age is required.
+                </div>
+            }
+        </div>
+        <div class="mb-3 mt-3">
+            <label for="department" class="form-label">Department:</label>
+            <input type="text" class="form-control" name="department" [(ngModel)]="customer.department" #department="ngModel" required>
+            @if(department.hasError('required') && department.touched){
+                <div class="text-danger">
+                  Department is required.
+                </div>
+            }
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+</div>

@@ -1,1 +1,40 @@
-<p>customer works!</p>
+<div class="container">
+<h1>Customer Information</h1>
+<ul>
+</ul>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Age</th>
+      <th scope="col">Department</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    @if(customers){
+        @for(customer of customers; track customer.customer_id){
+        <tr>
+            <th scope="row">{{customer.customer_id}}</th>
+            <td>{{customer.name}}</td>
+            <td>{{customer.age}}</td>
+            <td>{{customer.department}}</td>
+            <td>
+                <button type="button" class="btn btn-warning mx-2" [routerLink]="['/customers', customer.customer_id]">Edit</button>
+                <button type="button" class="btn btn-danger mx-2" (click)="delCustomer(customer.customer_id)">Delete</button>
+            </td>
+        </tr>
+        }
+    }
+ <!-- You can use your get customerbyid api as a reference for this task -->
+    <!-- Add a router /delete/id 
+    Convert the Delete button to be based on the above link 
+    When used clicks on this button it should run a function 
+    the function should call an api in CustomerService class that hit the delete api in node  -->
+    
+  </tbody>
+</table>
+
+</div>

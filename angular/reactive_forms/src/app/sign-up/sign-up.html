@@ -26,20 +26,17 @@
                 <div class="text-danger"> Maximum 12 characters are allowed</div>
             }
         </div>
-        <div>
-            <label class="form-label">Name</label>
-            <input type="text" class="form-control" name="name" formControlName="name">
-            @if(signUpForm.get('name')?.touched && signUpForm.get('name')?.errors?.['required']) {
-                <div class="text-danger"> Please provide a name </div>
-            }
-        </div>
-        <div>
-            <label class="form-label">Department</label>
-            <input type="text" class="form-control" name="department" formControlName="department">
-        </div>
+
         <div class="mb-3 mt-3">
-            <label class="form-label">Age</label>
-            <input type="number" class="form-control" name="age" formControlName="age">
+            <label for="" class="form-label">Confirm Password</label>
+            <input type="password" class="form-control" name="confirm_password" formControlName="confirm_password">
+            @if(signUpForm.get('confirm_password')?.touched && signUpForm.get('confirm_password')?.errors?.['required']) {
+                <div class="text-danger"> Please provide a password </div>
+            }
+
+            @if(signUpForm.get('confirm_password')?.touched && (signUpForm.get('confirm_password')?.value != signUpForm.get('password')?.value)) {
+                <div class="text-danger"> Confirm Password doesn't match</div>
+            }
         </div>
 
         <button type="submit" class="btn btn-primary">Sign In</button>

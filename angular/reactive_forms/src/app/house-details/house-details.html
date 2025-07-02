@@ -1,0 +1,14 @@
+<div class="contrainer">
+
+    <h3>{{house_description}}</h3>
+
+    @for(house of all_houses; track house.id){
+        <h3>{{house.name}}</h3>
+        <p>{{house.city}}, {{house.state}}</p>
+    }
+    <div>
+        <label for="" class="form-label">Name:</label>
+        <input class="form-control" type="text" #inputVal>
+        <button type="button" class="btn btn-primary" (click)="submitVal(inputVal.value)">Submit</button>
+    </div>
+</div>

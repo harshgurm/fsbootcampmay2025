@@ -1,0 +1,43 @@
+<div class="container">
+    <form action="" #signInForm="ngForm" (ngSubmit)="submitSignInForm(signInForm)">
+        <div class="mb-3 mt-3">
+            <label for="email" class="form-label">Name:</label>
+            <input type="text" class="form-control" name="name" [(ngModel)]="user.name" #username="ngModel" required pattern="^[a-zA-Z]*$">
+            @if (username.invalid && username.touched) {
+                
+                @if (username.hasError('required')) {
+                <div class="text-danger">
+                  Name is required.
+                </div>
+                } 
+
+                @if (username.hasError('pattern')) {
+                <div  class="text-danger">
+                  Name can contain alphabets only.
+                </div>
+                } 
+            }
+        </div>
+        <!-- invalid {{username.invalid}}
+        touched {{username.touched}}
+        errors {{username.errors | json}} -->
+        <div class="mb-3 mt-3">
+            <label for="age" class="form-label">Password:</label>
+            <input type="password" class="form-control" name="password" [(ngModel)]="user.password" minlength="6" required #password="ngModel">
+            @if(password.hasError('required') && password.touched){
+                <div class="text-danger">
+                  Password is required.
+                </div>
+            }
+            @if(password.hasError('minlength') && password.touched){
+                <div class="text-danger">
+                  Password should be more than 6 characters.
+                </div>
+            }
+           
+        </div>
+
+        <button type="submit" class="btn btn-warning">Sign In</button>
+    </form>
+
+</div>

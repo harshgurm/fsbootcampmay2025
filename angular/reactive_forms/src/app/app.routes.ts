@@ -3,6 +3,10 @@ import { SignIn } from './sign-in/sign-in';
 import { SignUp } from './sign-up/sign-up';
 import { Customer } from './customer/customer';
 import { PageNotFound } from './page-not-found/page-not-found';
+import { CustomerDetail } from './customer-detail/customer-detail';
+import { Houses } from './houses/houses';
+import { AddCustomer } from './add-customer/add-customer';
+import { AuthGuard } from './guards/auth-guard';
 
 export const routes: Routes = [
     {
@@ -14,16 +18,25 @@ export const routes: Routes = [
         component: SignUp
     },
     {
-        path: 'customer',
-        component: Customer
+        path: 'customers',
+        component: Customer,
+        canActivate: [AuthGuard]
     },
     {
-        path: 'customer/:id',
-        component: Customer
+        path: 'customers/:id',
+        component: CustomerDetail
+    },
+    {
+        path: 'add-customer',
+        component:AddCustomer
+    },
+    {
+        path: 'housing',
+        component:Houses
     },
     {
         path: '',
-        redirectTo: 'sign-in',
+        redirectTo: 'customers',
         pathMatch: 'full'
     }, 
     {
