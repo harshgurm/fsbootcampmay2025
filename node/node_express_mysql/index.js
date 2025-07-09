@@ -10,7 +10,50 @@ app.use(cors());
 // console.log(connection)
 app.use(express.json())
 
-app.get('/customers', verifyUser, async (req, res) => {
+const customers = [
+  {
+    "customer_id": 1,
+    "name": "John",
+    "age": 35,
+    "department": "IT"
+  },
+  {
+    "customer_id": 2,
+    "name": "Stephanie",
+    "age": 49,
+    "department": "Admin"
+  },
+  {
+    "customer_id": 3,
+    "name": "Test User",
+    "age": 28,
+    "department": "IT"
+  },
+  {
+    "customer_id": 5,
+    "name": "Sam",
+    "age": 34,
+    "department": null
+  },
+  {
+    "customer_id": 6,
+    "name": "Gemini",
+    "age": 30,
+    "department": null
+  },
+  {
+    "customer_id": 9,
+    "name": "George",
+    "age": 30,
+    "department": "IT"
+  }
+];
+
+app.get('/', (req, res) => {
+    res.json(customers);
+})
+
+app.get('/customers', async (req, res) => {
     try {
         const [data] = await connection.promise().query(
             'SELECT * FROM customers');
